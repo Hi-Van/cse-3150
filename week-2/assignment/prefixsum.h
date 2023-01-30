@@ -2,6 +2,7 @@
 #define __PREFIX_SUM_H
 
 
-bool nonNegativePrefixSum(int array[], int length);
+bool negativePrefixSum(int array[], int length);
+bool positivePrefixSum(int array[], int length);
 
 #endif
