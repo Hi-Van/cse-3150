@@ -48,6 +48,29 @@ bool positivePrefixSum(int array[], int length) {
     return false;
 }
 
+bool wellBalanced(int array[], int length) {
+    int stack = 0;
+
+    for (int idx = 0; idx < length; idx++) {
+        int val = array[idx];
+
+        if (val == -1) {
+
+            if (!stack) {
+                return false;
+            }
+
+            stack--;
+        }
+
+        else {
+            stack++;
+        }
+    }
+
+    return !stack;
+}
+
 void fisherYates(int array[], int length) {
     //Durstenfield implementation of Fisher-Yates algorithm
 
@@ -59,6 +82,26 @@ void fisherYates(int array[], int length) {
     } 
 }
 
+double convergence(int array[], int length) {
+    int valid = 0, invalid = 0;
+
+    for (int _ = 0; _ < 10000; _++) {
+        fisherYates(array, length); //randomize array
+
+        if (negativePrefixSum(array, length) and positivePrefixSum(array, length)) { //if array at least contains a negative or positive prefix
+            
+            if (wellBalanced(array, length)) { // if array is well balanced
+                valid++;
+            }
+
+            else {
+                invalid++;
+            }
+        }
+    }
+
+    return (double)valid / (double)invalid; // return ratio convergence
+}
 
 
 TEST_CASE("Test week1/2 functions") {
