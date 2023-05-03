@@ -7,14 +7,9 @@ make
 if [ $? -eq 0 ]; then
     # Run the output file
     echo -e "\n============================================="
-    echo -e "\nTesting ECNumbers\n"
+    echo -e "\nTesting prefix sums\n"
 
-    ./UnitTests.o
-
-    echo -e "\n============================================="
-    echo -e "\nTesting ECRemoveSpace\n"
-
-    ./ECRemoveSpace.o
+    ./prefixtest.o
 
     # Clean up the build
     echo -e "\n============================================="
